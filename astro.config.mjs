@@ -5,7 +5,7 @@ import sitemap from '@astrojs/sitemap';
 
 // https://astro.build/config
 export default defineConfig({
-    site: 'https://ashleybegin.com',
+    site: 'https://spacekraftrecords.com',
     integrations: [
         tailwind(),
         sitemap({

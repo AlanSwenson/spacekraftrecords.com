@@ -1,17 +1,21 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
-import tailwind from '@astrojs/tailwind';
+import cloudflare from '@astrojs/cloudflare';
+import tailwindcss from '@tailwindcss/vite';
 import sitemap from '@astrojs/sitemap';
 
 // https://astro.build/config
 export default defineConfig({
-    site: 'https://spacekraftrecords.com',
-    integrations: [
-        tailwind(),
-        sitemap({
-            changefreq: 'weekly',
-            priority: 0.7,
-            lastmod: new Date()
-        })
-    ],
+  site: 'https://spacekraftrecords.com',
+  adapter: cloudflare({ imageService: 'compile' }),
+  vite: {
+    plugins: [tailwindcss()],
+  },
+  integrations: [
+    sitemap({
+      changefreq: 'weekly',
+      priority: 0.7,
+      lastmod: new Date(),
+    }),
+  ],
 });
